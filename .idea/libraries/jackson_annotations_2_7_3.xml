@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="jackson-annotations-2.7.3">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/choicecamera-1.0.0-BUILD-SNAPSHOT/WEB-INF/lib/jackson-annotations-2.7.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/choicecamera-1.0.0-BUILD-SNAPSHOT/WEB-INF/lib/jackson-core-2.7.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/choicecamera-1.0.0-BUILD-SNAPSHOT/WEB-INF/lib/jackson-databind-2.7.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
