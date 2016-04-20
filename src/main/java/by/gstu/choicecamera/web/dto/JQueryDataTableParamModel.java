@@ -13,14 +13,14 @@ public class JQueryDataTableParamModel {
     public int iColumns;
     public int iSortingCols;
     public String sColumns;
-    public int sSearch_0;
+    //public int sSearch_0;
     public int iSortCol_0;
     public String sSortDir_0;
-    public int sSearch_1;
+    //public int sSearch_1;
     public int iSortCol_1;
-    public int sSearch_2;
+    //public int sSearch_2;
     public int iSortCol_2;
-    public int sSearch_3;
+    //public int sSearch_3;
     public int iSortCol_3;
 
     public JQueryDataTableParamModel() {
@@ -43,5 +43,101 @@ public class JQueryDataTableParamModel {
         this.iSortCol_1 = request.getParameter("iSortCol_1") != null ? Integer.parseInt(request.getParameter("iSortCol_1")) : 0;
         this.iSortCol_2 = request.getParameter("iSortCol_2") != null ? Integer.parseInt(request.getParameter("iSortCol_2")) : 0;
         this.iSortCol_3 = request.getParameter("iSortCol_3") != null ? Integer.parseInt(request.getParameter("iSortCol_3")) : 0;
+    }
+
+    public String getsEcho() {
+        return sEcho;
+    }
+
+    public void setsEcho(String sEcho) {
+        this.sEcho = sEcho;
+    }
+
+    public String getsSearch() {
+        return sSearch;
+    }
+
+    public void setsSearch(String sSearch) {
+        this.sSearch = sSearch;
+    }
+
+    public int getiDisplayLength() {
+        return iDisplayLength;
+    }
+
+    public void setiDisplayLength(int iDisplayLength) {
+        this.iDisplayLength = iDisplayLength;
+    }
+
+    public int getiDisplayStart() {
+        return iDisplayStart;
+    }
+
+    public void setiDisplayStart(int iDisplayStart) {
+        this.iDisplayStart = iDisplayStart;
+    }
+
+    public int getiColumns() {
+        return iColumns;
+    }
+
+    public void setiColumns(int iColumns) {
+        this.iColumns = iColumns;
+    }
+
+    public int getiSortingCols() {
+        return iSortingCols;
+    }
+
+    public void setiSortingCols(int iSortingCols) {
+        this.iSortingCols = iSortingCols;
+    }
+
+    public String getsColumns() {
+        return sColumns;
+    }
+
+    public void setsColumns(String sColumns) {
+        this.sColumns = sColumns;
+    }
+
+    public int getiSortCol_0() {
+        return iSortCol_0;
+    }
+
+    public void setiSortCol_0(int iSortCol_0) {
+        this.iSortCol_0 = iSortCol_0;
+    }
+
+    public String getsSortDir_0() {
+        return sSortDir_0;
+    }
+
+    public void setsSortDir_0(String sSortDir_0) {
+        this.sSortDir_0 = sSortDir_0;
+    }
+
+    public int getiSortCol_1() {
+        return iSortCol_1;
+    }
+
+    public void setiSortCol_1(int iSortCol_1) {
+        this.iSortCol_1 = iSortCol_1;
+    }
+
+    public int getiSortCol_2() {
+        return iSortCol_2;
+    }
+
+    public void setiSortCol_2(int iSortCol_2) {
+        this.iSortCol_2 = iSortCol_2;
+    }
+
+    public int getiSortCol_3() {
+        return iSortCol_3;
+    }
+
+    public void setiSortCol_3(int iSortCol_3) {
+        this.iSortCol_3 = iSortCol_3;
     }
 }

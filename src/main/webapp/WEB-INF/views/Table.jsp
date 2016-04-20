@@ -1,21 +1,23 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%--<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>--%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta charset="utf-8"/>
-    <link rel="Stylesheet" href="/content/StyleTable.css" type="text/css"/>
-    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
-    <script src="/js/jquery/jquery-2.1.4.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <link href="/content/jquery.dataTables.css" rel="stylesheet" type="text/css"/>
-    <script src="/js/jquery/jquery.dataTables.min.js" type="text/javascript"></script>
+    <%--<link rel='stylesheet' href="/ext/bootstrap/css/bootstrap-theme.min.css">--%>
+    <link rel='stylesheet' href="/resources/css/jquery.dataTables.min.css">
+    <link rel='stylesheet' href="/ext/bootstrap/css/bootstrap.css">
+    <script type='text/javascript' src="/ext/jquery/js/jquery.js"></script>
+    <script type='text/javascript' src="/ext/bootstrap/js/bootstrap.js"></script>
+    <script type='text/javascript' src="/resources/js/jquery.dataTables.min.js"></script>
 </head>
+
+
 <script type="text/javascript">
     $(document).ready(function () {
         var table = $('#myDataTable').dataTable({
             "bServerSide": true,
-            "language": {"url": "/datatable/lang/dataTables.<%=session.getValue("locale").toString()%>"},
+//            "language": {"url": "/resources/datatable/lang/dataTables.en_US"},
             "sAjaxSource": "camera",
             "bProcessing": true,
             "bRetrieve": true,
@@ -30,6 +32,16 @@
                     "width": "120px",
                     "targets": 0
                 },
+                {
+                    "render": function (data, type, row) {
+                        return data + ' - ' + row.apertureMax;
+                    },
+                    "targets": 5a
+                },
+                {
+                    "visible": false,
+                    "targets": 6
+                }
             ],
             "columns": [
                 {"data": "id"},
@@ -37,7 +49,8 @@
                 {"data": "price"},
                 {"data": "releaseDate"},
                 {"data": "manufacturer"},
-                {"data": "apertureMin" + "-" + "apertureMax"},
+                {"data": "apertureMin"},
+                {"data": "apertureMax"},
                 {"data": "matrixDot"}
             ]
         });
@@ -100,10 +113,13 @@
             <th><spring:message code="label.date"/></th>
             <th><spring:message code="label.manufacturer"/></th>
             <th><spring:message code="label.aperture"/></th>
+            <th></th>
             <th><spring:message code="label.matrixdot"/></th>
         </tr>
         </thead>
+
     </table>
+    <button class="btn" type="button">Go</button>
 </div>
 </body>
 </html>

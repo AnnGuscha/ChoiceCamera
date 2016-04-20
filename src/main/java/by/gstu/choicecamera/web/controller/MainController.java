@@ -2,6 +2,8 @@ package by.gstu.choicecamera.web.controller;
 
 import by.gstu.choicecamera.domain.Camera;
 import by.gstu.choicecamera.service.CameraService;
+import by.gstu.choicecamera.web.dto.JQueryDataTableParamModel;
+import by.gstu.choicecamera.web.dto.JsonDTO;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,11 +24,15 @@ public class MainController {
     @RequestMapping(method = RequestMethod.GET)
     public
     @ResponseBody
-    List<Camera> listCameras() {
+    Object listCameras(JQueryDataTableParamModel param) {
 
         List<Camera> cameraList = cameraService.listCamera();
 
-        return cameraList;
+        int size = cameraList.size();
+
+        JsonDTO jsonDTO = new JsonDTO(param.sEcho, size, size, cameraList);
+
+        return jsonDTO;
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)

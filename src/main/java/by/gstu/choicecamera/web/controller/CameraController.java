@@ -24,7 +24,7 @@ public class CameraController {
 		map.put("camera", new Camera());
 		map.put("cameraList", cameraService.listCamera());
 
-		return "camera";
+		return "Table";
 	}
 	
 	@RequestMapping("/")
