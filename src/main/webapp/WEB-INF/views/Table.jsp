@@ -36,7 +36,7 @@
                     "render": function (data, type, row) {
                         return data + ' - ' + row.apertureMax;
                     },
-                    "targets": 5a
+                    "targets": 5
                 },
                 {
                     "visible": false,
