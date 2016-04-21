@@ -6,18 +6,18 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
 @Repository
 public class CameraDAOImpl implements CameraDAO {
 
 	protected static Logger logger = Logger.getLogger("main/java/by/gstu/choicecamera/dao");
+	@Autowired
+	private SessionFactory sessionFactory;
 
 	public CameraDAOImpl() {
 	}
-
-	@Autowired
-	private SessionFactory sessionFactory;
 
 	public void addCamera(Camera camera) {
 		logger.debug("Adding new camera");

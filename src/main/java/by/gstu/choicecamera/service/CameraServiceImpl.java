@@ -18,15 +18,12 @@ public class CameraServiceImpl implements CameraService {
     }
 
     @Transactional
-    public void addCamera(Camera contact) {
-        cameraDAO.addCamera(contact);
+    public void addCamera(Camera camera) {
+        cameraDAO.addCamera(camera);
     }
-    public void addCamera3(Camera contact) {
-        cameraDAO.addCamera(contact);
-    }
+
     @Transactional
     public List<Camera> listCamera() {
-
         return cameraDAO.listCamera();
     }
 

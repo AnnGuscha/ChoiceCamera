@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface CameraDAO {
 
-	public void addCamera(Camera camera);
+	void addCamera(Camera camera);
 
-	public List<Camera> listCamera();
+	List<Camera> listCamera();
 
-	public void removeCamera(Integer id);
+	void removeCamera(Integer id);
 
-	public Camera getCamera(Integer id);
+	Camera getCamera(Integer id);
 
-	public void editCamera(Camera camera);
+	void editCamera(Camera camera);
 }

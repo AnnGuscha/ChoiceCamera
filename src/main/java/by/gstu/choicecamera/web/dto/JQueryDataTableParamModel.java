@@ -1,48 +1,24 @@
 package by.gstu.choicecamera.web.dto;
 
-import javax.servlet.http.HttpServletRequest;
-
-/**
- * Created by Anna on 12/11/2015.
- */
 public class JQueryDataTableParamModel {
-    public String sEcho;
-    public String sSearch;
-    public int iDisplayLength;
-    public int iDisplayStart;
-    public int iColumns;
-    public int iSortingCols;
-    public String sColumns;
-    //public int sSearch_0;
-    public int iSortCol_0;
-    public String sSortDir_0;
-    //public int sSearch_1;
-    public int iSortCol_1;
-    //public int sSearch_2;
-    public int iSortCol_2;
-    //public int sSearch_3;
-    public int iSortCol_3;
+    private String sEcho;
+    private String sSearch;
+    private Integer iDisplayLength;
+    private Integer iDisplayStart;
+    private Integer iColumns;
+    private Integer iSortingCols;
+    private String sColumns;
+    private String sSortDir_0;
+    private Integer iSortCol_0;
+    private Integer iSortCol_1;
+    private Integer iSortCol_2;
+    private Integer iSortCol_3;
+    private Integer iSortCol_4;
+    private Integer iSortCol_5;
+    private Integer iSortCol_6;
+    private Integer iSortCol_7;
 
     public JQueryDataTableParamModel() {
-    }
-
-    public JQueryDataTableParamModel(HttpServletRequest request) {
-        this.sEcho = request.getParameter("sEcho");
-        this.iColumns = Integer.parseInt(request.getParameter("iColumns"));
-        this.iDisplayLength = Integer.parseInt(request.getParameter("iDisplayLength"));
-        this.iDisplayStart = Integer.parseInt(request.getParameter("iDisplayStart"));
-        this.iSortingCols = Integer.parseInt(request.getParameter("iSortingCols"));
-        this.sSearch = request.getParameter("sSearch");
-        this.sColumns = request.getParameter("sColumns");
-        this.sSortDir_0 = request.getParameter("sSortDir_0");
-//        this.sSearch_0 = Integer.parseInt((String) request.getParameter("sSearch_0"));
-//        this.sSearch_1 = Integer.parseInt((String) request.getParameter("sSearch_1"));
-//        this.sSearch_2 = Integer.parseInt((String) request.getParameter("sSearch_2"));
-//        this.sSearch_3 = Integer.parseInt((String) request.getParameter("sSearch_3"));
-        this.iSortCol_0 = request.getParameter("iSortCol_0") != null ? Integer.parseInt(request.getParameter("iSortCol_0")) : 0;
-        this.iSortCol_1 = request.getParameter("iSortCol_1") != null ? Integer.parseInt(request.getParameter("iSortCol_1")) : 0;
-        this.iSortCol_2 = request.getParameter("iSortCol_2") != null ? Integer.parseInt(request.getParameter("iSortCol_2")) : 0;
-        this.iSortCol_3 = request.getParameter("iSortCol_3") != null ? Integer.parseInt(request.getParameter("iSortCol_3")) : 0;
     }
 
     public String getsEcho() {
@@ -61,35 +37,35 @@ public class JQueryDataTableParamModel {
         this.sSearch = sSearch;
     }
 
-    public int getiDisplayLength() {
+    public Integer getiDisplayLength() {
         return iDisplayLength;
     }
 
-    public void setiDisplayLength(int iDisplayLength) {
+    public void setiDisplayLength(Integer iDisplayLength) {
         this.iDisplayLength = iDisplayLength;
     }
 
-    public int getiDisplayStart() {
+    public Integer getiDisplayStart() {
         return iDisplayStart;
     }
 
-    public void setiDisplayStart(int iDisplayStart) {
+    public void setiDisplayStart(Integer iDisplayStart) {
         this.iDisplayStart = iDisplayStart;
     }
 
-    public int getiColumns() {
+    public Integer getiColumns() {
         return iColumns;
     }
 
-    public void setiColumns(int iColumns) {
+    public void setiColumns(Integer iColumns) {
         this.iColumns = iColumns;
     }
 
-    public int getiSortingCols() {
+    public Integer getiSortingCols() {
         return iSortingCols;
     }
 
-    public void setiSortingCols(int iSortingCols) {
+    public void setiSortingCols(Integer iSortingCols) {
         this.iSortingCols = iSortingCols;
     }
 
@@ -101,14 +77,6 @@ public class JQueryDataTableParamModel {
         this.sColumns = sColumns;
     }
 
-    public int getiSortCol_0() {
-        return iSortCol_0;
-    }
-
-    public void setiSortCol_0(int iSortCol_0) {
-        this.iSortCol_0 = iSortCol_0;
-    }
-
     public String getsSortDir_0() {
         return sSortDir_0;
     }
@@ -117,27 +85,67 @@ public class JQueryDataTableParamModel {
         this.sSortDir_0 = sSortDir_0;
     }
 
-    public int getiSortCol_1() {
+    public Integer getiSortCol_0() {
+        return iSortCol_0;
+    }
+
+    public void setiSortCol_0(Integer iSortCol_0) {
+        this.iSortCol_0 = iSortCol_0;
+    }
+
+    public Integer getiSortCol_1() {
         return iSortCol_1;
     }
 
-    public void setiSortCol_1(int iSortCol_1) {
+    public void setiSortCol_1(Integer iSortCol_1) {
         this.iSortCol_1 = iSortCol_1;
     }
 
-    public int getiSortCol_2() {
+    public Integer getiSortCol_2() {
         return iSortCol_2;
     }
 
-    public void setiSortCol_2(int iSortCol_2) {
+    public void setiSortCol_2(Integer iSortCol_2) {
         this.iSortCol_2 = iSortCol_2;
     }
 
-    public int getiSortCol_3() {
+    public Integer getiSortCol_3() {
         return iSortCol_3;
     }
 
-    public void setiSortCol_3(int iSortCol_3) {
+    public void setiSortCol_3(Integer iSortCol_3) {
         this.iSortCol_3 = iSortCol_3;
+    }
+
+    public Integer getiSortCol_4() {
+        return iSortCol_4;
+    }
+
+    public void setiSortCol_4(Integer iSortCol_4) {
+        this.iSortCol_4 = iSortCol_4;
+    }
+
+    public Integer getiSortCol_5() {
+        return iSortCol_5;
+    }
+
+    public void setiSortCol_5(Integer iSortCol_5) {
+        this.iSortCol_5 = iSortCol_5;
+    }
+
+    public Integer getiSortCol_6() {
+        return iSortCol_6;
+    }
+
+    public void setiSortCol_6(Integer iSortCol_6) {
+        this.iSortCol_6 = iSortCol_6;
+    }
+
+    public Integer getiSortCol_7() {
+        return iSortCol_7;
+    }
+
+    public void setiSortCol_7(Integer iSortCol_7) {
+        this.iSortCol_7 = iSortCol_7;
     }
 }
