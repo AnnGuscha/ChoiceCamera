@@ -57,8 +57,12 @@ public class CameraDAOImpl implements CameraDAO {
 
 		// Assign updated values to this camera
 		existingCamera.setName(camera.getName());
-		existingCamera.setManufacturer(existingCamera.getManufacturer());
-		existingCamera.setPrice(existingCamera.getPrice());
+		existingCamera.setManufacturer(camera.getManufacturer());
+		existingCamera.setPrice(camera.getPrice());
+		existingCamera.setMatrixDot(camera.getMatrixDot());
+		existingCamera.setApertureMin(camera.getApertureMin());
+		existingCamera.setApertureMax(camera.getApertureMax());
+		existingCamera.setReleaseDate(camera.getReleaseDate());
 
 		// Save updates
 		session.save(existingCamera);

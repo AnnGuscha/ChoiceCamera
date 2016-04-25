@@ -8,5 +8,5 @@
 
 	<!-- Определяем папку, в которой будем искать веб компоненты (контроллеры)-->
 	<context:component-scan base-package="by.gstu.choicecamera.web.controller" />
-	 
+	<context:component-scan base-package="by.gstu.choicecamera.web.validator"/>
 </beans>
