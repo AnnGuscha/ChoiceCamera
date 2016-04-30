@@ -20,6 +20,11 @@ public enum Manufacturers {
         return value;
     }
 
+    public void setValue(int val)
+    {
+        value=val;
+    }
+
     public String getString() {
         return string;
     }

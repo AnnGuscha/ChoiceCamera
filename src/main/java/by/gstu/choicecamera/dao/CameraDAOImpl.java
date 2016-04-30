@@ -19,20 +19,20 @@ public class CameraDAOImpl implements CameraDAO {
 	public CameraDAOImpl() {
 	}
 
-	public void addCamera(Camera camera) {
+	public void add(Camera camera) {
 		logger.debug("Adding new camera");
 		sessionFactory.getCurrentSession().save(camera);
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Camera> listCamera() {
+	public List<Camera> list() {
 
 		logger.debug("Retrieving all cameras");
 		return sessionFactory.getCurrentSession().createQuery("from Camera")
 			.list();
 	}
 
-	public void removeCamera(Integer id) {
+	public void remove(Integer id) {
 		logger.debug("Deleting existing camera");
 		Camera camera = (Camera) sessionFactory.getCurrentSession().load(
 				Camera.class, id);
@@ -41,12 +41,12 @@ public class CameraDAOImpl implements CameraDAO {
 		}
 	}
 
-	public Camera getCamera(Integer id)
+	public Camera get(Integer id)
 	{
 		return (Camera) sessionFactory.getCurrentSession().get(Camera.class, id);
 	}
 
-	public void editCamera(Camera camera) {
+	public void edit(Camera camera) {
 		logger.debug("Editing existing camera");
 
 		// Retrieve session from Hibernate

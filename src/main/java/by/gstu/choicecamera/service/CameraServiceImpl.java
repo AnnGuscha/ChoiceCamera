@@ -18,27 +18,27 @@ public class CameraServiceImpl implements CameraService {
     }
 
     @Transactional
-    public void addCamera(Camera camera) {
-        cameraDAO.addCamera(camera);
+    public void add(Camera camera) {
+        cameraDAO.add(camera);
     }
 
     @Transactional
-    public List<Camera> listCamera() {
-        return cameraDAO.listCamera();
+    public List<Camera> list() {
+        return cameraDAO.list();
     }
 
     @Transactional
-    public void removeCamera(Integer id) {
-        cameraDAO.removeCamera(id);
+    public void remove(Integer id) {
+        cameraDAO.remove(id);
     }
 
     @Transactional
-    public Camera getCamera(Integer id) {
-        return cameraDAO.getCamera(id);
+    public Camera get(Integer id) {
+        return cameraDAO.get(id);
     }
 
     @Transactional
-    public void editCamera(Camera camera) {
-        cameraDAO.editCamera(camera);
+    public void edit(Camera camera) {
+        cameraDAO.edit(camera);
     }
 }

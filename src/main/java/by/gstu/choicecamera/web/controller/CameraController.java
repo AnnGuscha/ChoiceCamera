@@ -53,7 +53,7 @@ public class CameraController {
 	@ResponseBody
 	Object getAll(JQueryDataTableParamModel param) {
 
-		List<Camera> cameraList = cameraService.listCamera();
+		List<Camera> cameraList = cameraService.list();
 		int iTotalRecords = cameraList.size();
 
 		//Search
@@ -154,7 +154,7 @@ public class CameraController {
 	@RequestMapping(value = "/cameras/{id}", method = RequestMethod.GET)
 	public String showCamera(@PathVariable("id") int id, Model model) {
 
-		Camera camera = cameraService.getCamera(id);
+		Camera camera = cameraService.get(id);
 		if (camera == null) {
 			model.addAttribute("css", "danger");
 			model.addAttribute("msg", "Camera not found");
@@ -177,10 +177,10 @@ public class CameraController {
 			redirectAttributes.addFlashAttribute("css", "success");
 			if (camera.getId() == null || camera.getId() == 0) {
 				redirectAttributes.addFlashAttribute("msg", "Camera added successfully!");
-				cameraService.addCamera(camera);
+				cameraService.add(camera);
 			} else {
 				redirectAttributes.addFlashAttribute("msg", "Camera updated successfully!");
-				cameraService.editCamera(camera);
+				cameraService.edit(camera);
 			}
 
 			// POST/REDIRECT/GET
@@ -218,7 +218,7 @@ public class CameraController {
 	@RequestMapping(value = "/cameras/update/{id}", method = RequestMethod.GET)
 	public String showUpdateCameraForm(@PathVariable("id") int id, Model model) {
 
-		Camera camera = cameraService.getCamera(id);
+		Camera camera = cameraService.get(id);
 		model.addAttribute("cameraForm", camera);
 		model.addAttribute("isNew", false);
 
@@ -232,7 +232,7 @@ public class CameraController {
 	@RequestMapping(value = "/cameras/delete/{id}", method = RequestMethod.GET)
 	public String deleteUser(@PathVariable("id") int id, final RedirectAttributes redirectAttributes) {
 
-		cameraService.removeCamera(id);
+		cameraService.remove(id);
 
 		redirectAttributes.addFlashAttribute("css", "success");
 		redirectAttributes.addFlashAttribute("msg", "Camera is deleted!");

@@ -10,13 +10,13 @@ import java.util.List;
 @Transactional
 public interface CameraService {
 
-    void addCamera(Camera camera);
+    void add(Camera camera);
 
-    List<Camera> listCamera();
+    List<Camera> list();
 
-    void removeCamera(Integer id);
+    void remove(Integer id);
 
-    Camera getCamera(Integer id);
+    Camera get(Integer id);
 
-    void editCamera(Camera camera);
+    void edit(Camera camera);
 }

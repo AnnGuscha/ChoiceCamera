@@ -16,7 +16,7 @@ public class MainController {
 //    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
 //    public Camera get(@PathVariable("id") Integer id) {
 //
-//        Camera camera = cameraService.getCamera(id);
+//        Camera camera = expertService.get(id);
 //
 //        return camera;
 //    }
@@ -25,7 +25,7 @@ public class MainController {
 //    public ModelAndView add(@ModelAttribute("camera") Camera camera,
 //                                  BindingResult result) {
 //
-//        cameraService.addCamera(camera);
+//        expertService.add(camera);
 //
 //        return new ModelAndView("details","camera",camera);
 //    }
@@ -33,9 +33,9 @@ public class MainController {
 //    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
 //    public String edit(@PathVariable("id") Camera camera, Map<String, Object> map) {
 //
-//        cameraService.editCamera(camera);
+//        expertService.edit(camera);
 //
-//        map.put("camera", cameraService.getCamera(camera.getId()));
+//        map.put("camera", expertService.get(camera.getId()));
 //
 //        return "camera";
 //    }
@@ -43,7 +43,7 @@ public class MainController {
 //    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 //    public String delete(@PathVariable("id") Integer cameraId) {
 //
-//        cameraService.removeCamera(cameraId);
+//        expertService.remove(cameraId);
 //
 //        return "redirect:/index";
 //    }
