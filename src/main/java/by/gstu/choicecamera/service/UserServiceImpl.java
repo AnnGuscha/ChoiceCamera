@@ -38,6 +38,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional
+    public User get(String login) {
+        return userDAO.get(login);
+    }
+
+
+    @Transactional
     public void edit(User user) {
         userDAO.edit(user);
     }

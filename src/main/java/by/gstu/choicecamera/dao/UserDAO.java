@@ -15,4 +15,6 @@ public interface UserDAO {
 	User get(Integer id);
 
 	void edit(User user);
+
+	User get(String login);
 }

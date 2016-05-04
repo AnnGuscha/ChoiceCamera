@@ -18,5 +18,7 @@ public interface UserService {
 
     User get(Integer id);
 
+    User get(String login);
+
     void edit(User user);
 }

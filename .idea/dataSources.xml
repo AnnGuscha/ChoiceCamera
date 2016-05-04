@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="3185765012">
+  <component name="DataSourceManagerImpl" format="xml" hash="180415546">
     <data-source source="LOCAL" name="MySQL - cameras@localhost" uuid="9c419e5e-5ec2-49ea-bae4-4784bdb38fe6">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>

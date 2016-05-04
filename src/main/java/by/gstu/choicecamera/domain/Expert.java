@@ -2,6 +2,7 @@ package by.gstu.choicecamera.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name = "Expert")
@@ -14,11 +15,7 @@ public class Expert implements Serializable {
     @GeneratedValue
     private Integer id;
 
-//    @OneToOne
-//    @JoinColumn(name = "UserId")
-//    private User user;
-
-    @Column(name = "UserId")
+    @Column(name = "User")
     private Integer user;
 
     @Column(name = "Name")
@@ -45,6 +42,17 @@ public class Expert implements Serializable {
     public Expert() {
     }
 
+    public Expert(Integer user, String name, Double markPrice, Double markDate, Double markManufacturer, Double markAperture, Double markMatrixDot, String manufacturersMarks) {
+        this.user = user;
+        this.name = name;
+        this.markPrice = markPrice;
+        this.markDate = markDate;
+        this.markManufacturer = markManufacturer;
+        this.markAperture = markAperture;
+        this.markMatrixDot = markMatrixDot;
+        this.manufacturersMarks = manufacturersMarks;
+    }
+
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
@@ -57,21 +65,12 @@ public class Expert implements Serializable {
         this.id = id;
     }
 
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
-
-
     public Integer getUser() {
         return user;
     }
 
-    public void setUser(Integer userId) {
-        this.user = userId;
+    public void setUser(Integer user) {
+        this.user = user;
     }
 
     public String getName() {
@@ -122,15 +121,6 @@ public class Expert implements Serializable {
         this.markMatrixDot = markMatrixDot;
     }
 
-//    public Double[] getManufacturersMarksDouble() {
-//        String[] marksString = manufacturersMarks.split(" ");
-//        Double[] marks = new Double[marksString.length];
-//        for (int i = 0; i < marks.length; i++) {
-//            marks[i] = Double.parseDouble(marksString[i]);
-//        }
-//        return marks;
-//    }
-
     public String getManufacturersMarks() {
         return manufacturersMarks;
     }
@@ -138,6 +128,36 @@ public class Expert implements Serializable {
     public void setManufacturersMarks(String manufacturersMarks) {
         this.manufacturersMarks = manufacturersMarks;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Expert)) return false;
+        Expert expert = (Expert) o;
+        return Objects.equals(getId(), expert.getId()) &&
+                Objects.equals(getUser(), expert.getUser()) &&
+                Objects.equals(getName(), expert.getName()) &&
+                Objects.equals(getMarkPrice(), expert.getMarkPrice()) &&
+                Objects.equals(getMarkDate(), expert.getMarkDate()) &&
+                Objects.equals(getMarkManufacturer(), expert.getMarkManufacturer()) &&
+                Objects.equals(getMarkAperture(), expert.getMarkAperture()) &&
+                Objects.equals(getMarkMatrixDot(), expert.getMarkMatrixDot()) &&
+                Objects.equals(getManufacturersMarks(), expert.getManufacturersMarks());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getUser(), getName(), getMarkPrice(), getMarkDate(), getMarkManufacturer(), getMarkAperture(), getMarkMatrixDot(), getManufacturersMarks());
+    }
+
+    //    public Double[] getManufacturersMarksDouble() {
+//        String[] marksString = manufacturersMarks.split(" ");
+//        Double[] marks = new Double[marksString.length];
+//        for (int i = 0; i < marks.length; i++) {
+//            marks[i] = Double.parseDouble(marksString[i]);
+//        }
+//        return marks;
+//    }
 
 //    public void setManufacturersMarks(Double[] marksDouble) {
 //        String res = "";

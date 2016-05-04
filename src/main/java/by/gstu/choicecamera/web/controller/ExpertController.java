@@ -3,32 +3,30 @@ package by.gstu.choicecamera.web.controller;
 import by.gstu.choicecamera.domain.Expert;
 import by.gstu.choicecamera.domain.Manufacturers;
 import by.gstu.choicecamera.service.ExpertService;
-import by.gstu.choicecamera.web.dto.JQueryDataTableParamModel;
-import by.gstu.choicecamera.web.dto.JsonDTO;
-import by.gstu.choicecamera.web.dto.SortHelper;
+import by.gstu.choicecamera.util.SessionUtil;
+import by.gstu.choicecamera.util.Tuple;
 import by.gstu.choicecamera.web.validator.ExpertFormValidator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 public class ExpertController {
 
 	@Autowired
 	public ExpertService expertService;
+
 	@Autowired
 	ExpertFormValidator expertFormValidator;
 
@@ -37,56 +35,85 @@ public class ExpertController {
 		binder.setValidator(expertFormValidator);
 	}
 
+	@RequestMapping("/expert")
+	public String expert(Model model) {
+
+		Expert expert = expertService.get(SessionUtil.getSessionUser());
+		model.addAttribute("expert", expert);
+		return "expert/table";
+	}
 
 	// update marks
-	@RequestMapping(value = "/expert", method = RequestMethod.POST)
-	public String saveOrUpdateCamera(@ModelAttribute("expertForm") @Validated Expert expert,
+	@RequestMapping(value = "/expert/api/marks", method = RequestMethod.POST)
+	public String editMarks(@ModelAttribute("expertForm") @Validated Expert expert,
 									 BindingResult result, Model model, final RedirectAttributes redirectAttributes) {
 
 		if (result.hasErrors()) {
 			populateDefaultModel(model);
-			return "expert/addMark";
+			return "expert/evaluateCriteria";
 		} else {
 			redirectAttributes.addFlashAttribute("css", "success");
 			redirectAttributes.addFlashAttribute("msg", "Marks updated successfully!");
 			expertService.edit(expert);
 
 			// POST/REDIRECT/GET
-			return "redirect:/index";
+			return "redirect:/expert";
 		}
-
 	}
 
-	// show add form
-	@RequestMapping(value = "/addmarks/{id}", method = RequestMethod.GET)
-	public String showUpdateCameraForm(@PathVariable("id") int id, Model model) {
+	// show edit form
+	@RequestMapping(value = "/expert/marks", method = RequestMethod.GET)
+	public String showEditExpertForm(Model model) {
 
-		Expert expert = expertService.get(id);
+		Expert expert = expertService.get(SessionUtil.getSessionUser());
 		model.addAttribute("expertForm", expert);
 
 		populateDefaultModel(model);
 
-		return "expert/addMark";
+		return "expert/evaluateCriteria";
+	}
+
+	// show edit form
+	@RequestMapping(value = "/expert/marks/manuf", method = RequestMethod.GET)
+	public String editValueManufForm(Model model) {
+
+		Expert expert = expertService.get(SessionUtil.getSessionUser());
+		model.addAttribute("expert", expert);
+
+		populateDefaultModel(model);
+
+		return "expert/evaluateManufacturers";
+	}
+
+	// edit marks
+	@RequestMapping(value = "/expert/api/marks/manuf", method = RequestMethod.POST)
+	public String editManufMarks(@ModelAttribute("expert") Expert expert,
+								 BindingResult result, Model model, final RedirectAttributes redirectAttributes) {
+
+		if (result.hasErrors()) {
+			populateDefaultModel(model);
+			return "expert/evaluateManufacturers";
+		} else {
+			redirectAttributes.addFlashAttribute("css", "success");
+			redirectAttributes.addFlashAttribute("msg", "Marks updated successfully!");
+			expertService.edit(expert);
+
+			// POST/REDIRECT/GET
+			return "redirect:/expert";
+		}
 	}
 
 	private void populateDefaultModel(Model model) {
 
 		List<Integer> listMarks = new ArrayList<>();
-		for(int i=1; i<=5; i++)
-		{
+		for (int i = 1; i <= 10; i++) {
 			listMarks.add(i);
 		}
 		model.addAttribute("listMarks", listMarks);
-	}
-
-	@ExceptionHandler(EmptyResultDataAccessException.class)
-	public ModelAndView handleEmptyData(HttpServletRequest req, Exception ex) {
-
-		ModelAndView model = new ModelAndView();
-		model.setViewName("cameras/show");
-		model.addObject("msg", "camera not found");
-
-		return model;
-
+		List<Tuple<Manufacturers, Integer>> manufacturers = new ArrayList<>();
+		for (Manufacturers item : Manufacturers.values()) {
+			manufacturers.add(new Tuple<>(item, 0));
+		}
+		model.addAttribute("manufacturers", manufacturers);
 	}
 }

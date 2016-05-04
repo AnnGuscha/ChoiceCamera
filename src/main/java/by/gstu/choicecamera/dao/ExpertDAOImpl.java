@@ -1,7 +1,9 @@
 package by.gstu.choicecamera.dao;
 
 import by.gstu.choicecamera.domain.Expert;
+import by.gstu.choicecamera.domain.User;
 import org.apache.log4j.Logger;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +46,15 @@ public class ExpertDAOImpl implements ExpertDAO {
 	public Expert get(Integer id)
 	{
 		Expert expert = (Expert) sessionFactory.getCurrentSession().get(Expert.class, id);
+		return expert;
+	}
+
+	public Expert get(User user) {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		Query query = session.createQuery("from Expert where user=:userId");
+		query.setParameter("userId", user.getId());
+		Expert expert = (Expert) query.list().get(0);
 		return expert;
 	}
 

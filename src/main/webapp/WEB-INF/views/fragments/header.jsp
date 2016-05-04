@@ -4,6 +4,7 @@
     <link rel='stylesheet' href="/resources/css/hello.css">
     <link rel='stylesheet' href="/resources/css/bootstrap.min.css">
     <link rel='stylesheet' href="/resources/css/jquery.dataTables.min.css">
+
     <%--<link rel='stylesheet' href="/ext/bootstrap/css/bootstrap.css">--%>
     <link rel='stylesheet' href="/resources/js/hello.js">
     <script type='text/javascript' src="/ext/jquery/js/jquery.js"></script>

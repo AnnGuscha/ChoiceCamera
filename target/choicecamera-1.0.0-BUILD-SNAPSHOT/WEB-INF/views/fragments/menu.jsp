@@ -18,19 +18,15 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                        aria-expanded="false"><spring:message code="label.expert"/><span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
+                        <li><a href="/expert"><spring:message code="label.home"/></a></li>
+                        <li><a href="/expert/marks"><spring:message code="label.evalcrit"/></a></li>
+                        <li><a href="/expert/marks/manuf"><spring:message code="label.evalmanuf"/></a></li>
                     </ul>
                 </li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><spring:message code="label.logout"/></a></li>
+                <li><a href="/logout"><spring:message code="label.logout"/></a></li>
             </ul>
         </div>
     </div>

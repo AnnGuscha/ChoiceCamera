@@ -2,6 +2,7 @@ package by.gstu.choicecamera.dao;
 
 import by.gstu.choicecamera.domain.User;
 import org.apache.log4j.Logger;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,15 @@ public class UserDAOImpl implements UserDAO {
 		if (null != user) {
 			sessionFactory.getCurrentSession().delete(user);
 		}
+	}
+
+	public User get(String name) {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		Query query = session.createQuery("from User where login=:username");
+		query.setParameter("username", name);
+		User user = (User) query.list().get(0);
+		return user;
 	}
 
 	public User get(Integer id)
