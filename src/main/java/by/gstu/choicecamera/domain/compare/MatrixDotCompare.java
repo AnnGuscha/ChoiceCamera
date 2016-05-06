@@ -11,9 +11,9 @@ public class MatrixDotCompare implements Comparator<Camera> {
 
     @Override
     public int compare(Camera cam1, Camera cam2) {
-        if(cam1.getMatrixDot()<cam2.getMatrixDot())
-            return 1;
         if(cam1.getMatrixDot()>cam2.getMatrixDot())
+            return 1;
+        if (cam1.getMatrixDot() < cam2.getMatrixDot())
             return -1;
         return 0;
     }

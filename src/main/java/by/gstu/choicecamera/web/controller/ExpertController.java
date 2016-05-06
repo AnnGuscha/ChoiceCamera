@@ -7,6 +7,7 @@ import by.gstu.choicecamera.util.SessionUtil;
 import by.gstu.choicecamera.util.Tuple;
 import by.gstu.choicecamera.web.validator.ExpertFormValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 @Controller
 public class ExpertController {
@@ -46,14 +48,17 @@ public class ExpertController {
 	// update marks
 	@RequestMapping(value = "/expert/api/marks", method = RequestMethod.POST)
 	public String editMarks(@ModelAttribute("expertForm") @Validated Expert expert,
-									 BindingResult result, Model model, final RedirectAttributes redirectAttributes) {
+							BindingResult result, Model model, final RedirectAttributes redirectAttributes, Locale locale) {
 
 		if (result.hasErrors()) {
 			populateDefaultModel(model);
 			return "expert/evaluateCriteria";
 		} else {
 			redirectAttributes.addFlashAttribute("css", "success");
-			redirectAttributes.addFlashAttribute("msg", "Marks updated successfully!");
+			ResourceBundleMessageSource bean = new ResourceBundleMessageSource();
+			bean.setBasename("messages");
+			String msg = bean.getMessage("msg.marks_updated_successfully", null, locale);
+			redirectAttributes.addFlashAttribute("msg", msg);
 			expertService.edit(expert);
 
 			// POST/REDIRECT/GET
@@ -88,14 +93,17 @@ public class ExpertController {
 	// edit marks
 	@RequestMapping(value = "/expert/api/marks/manuf", method = RequestMethod.POST)
 	public String editManufMarks(@ModelAttribute("expert") Expert expert,
-								 BindingResult result, Model model, final RedirectAttributes redirectAttributes) {
+								 BindingResult result, Model model, final RedirectAttributes redirectAttributes, Locale locale) {
 
 		if (result.hasErrors()) {
 			populateDefaultModel(model);
 			return "expert/evaluateManufacturers";
 		} else {
 			redirectAttributes.addFlashAttribute("css", "success");
-			redirectAttributes.addFlashAttribute("msg", "Marks updated successfully!");
+			ResourceBundleMessageSource bean = new ResourceBundleMessageSource();
+			bean.setBasename("messages");
+			String msg = bean.getMessage("msg.marks_updated_successfully", null, locale);
+			redirectAttributes.addFlashAttribute("msg", msg);
 			expertService.edit(expert);
 
 			// POST/REDIRECT/GET

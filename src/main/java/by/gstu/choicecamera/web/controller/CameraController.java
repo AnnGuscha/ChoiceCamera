@@ -8,6 +8,7 @@ import by.gstu.choicecamera.web.dto.JsonDTO;
 import by.gstu.choicecamera.web.dto.SortHelper;
 import by.gstu.choicecamera.web.validator.CameraFormValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 @Controller
@@ -152,12 +154,15 @@ public class CameraController {
 
 	// show camera
 	@RequestMapping(value = "/cameras/{id}", method = RequestMethod.GET)
-	public String showCamera(@PathVariable("id") int id, Model model) {
+	public String showCamera(@PathVariable("id") int id, Model model, Locale locale) {
 
 		Camera camera = cameraService.get(id);
 		if (camera == null) {
 			model.addAttribute("css", "danger");
-			model.addAttribute("msg", "Camera not found");
+			ResourceBundleMessageSource bean = new ResourceBundleMessageSource();
+			bean.setBasename("messages");
+			String msg = bean.getMessage("msg.camera_not_found", null, locale);
+			model.addAttribute("msg", msg);
 		}
 		model.addAttribute("camera", camera);
 
@@ -168,7 +173,7 @@ public class CameraController {
 	// save or update camera
 	@RequestMapping(value = "/camera", method = RequestMethod.POST)
 	public String saveOrUpdateCamera(@ModelAttribute("cameraForm") @Validated Camera camera,
-									 BindingResult result, Model model, final RedirectAttributes redirectAttributes) {
+									 BindingResult result, Model model, final RedirectAttributes redirectAttributes, Locale locale) {
 
 		if (result.hasErrors()) {
 			populateDefaultModel(model);
@@ -176,10 +181,13 @@ public class CameraController {
 		} else {
 			redirectAttributes.addFlashAttribute("css", "success");
 			if (camera.getId() == null || camera.getId() == 0) {
-				redirectAttributes.addFlashAttribute("msg", "Camera added successfully!");
+				redirectAttributes.addFlashAttribute("msg", "camera_added_successfully");
 				cameraService.add(camera);
 			} else {
-				redirectAttributes.addFlashAttribute("msg", "Camera updated successfully!");
+				ResourceBundleMessageSource bean = new ResourceBundleMessageSource();
+				bean.setBasename("messages");
+				String msg = bean.getMessage("msg.camera_updated_successfully", null, locale);
+				redirectAttributes.addFlashAttribute("msg", msg);
 				cameraService.edit(camera);
 			}
 
@@ -230,12 +238,15 @@ public class CameraController {
 
 	// delete camera
 	@RequestMapping(value = "/cameras/delete/{id}", method = RequestMethod.GET)
-	public String deleteUser(@PathVariable("id") int id, final RedirectAttributes redirectAttributes) {
+	public String deleteUser(@PathVariable("id") int id, final RedirectAttributes redirectAttributes, Locale locale) {
 
 		cameraService.remove(id);
 
 		redirectAttributes.addFlashAttribute("css", "success");
-		redirectAttributes.addFlashAttribute("msg", "Camera is deleted!");
+		ResourceBundleMessageSource bean = new ResourceBundleMessageSource();
+		bean.setBasename("messages");
+		String msg = bean.getMessage("msg.camera_is_deleted", null, locale);
+		redirectAttributes.addFlashAttribute("msg", msg);
 
 		return "redirect:/index";
 
@@ -252,11 +263,14 @@ public class CameraController {
 	}
 
 	@ExceptionHandler(EmptyResultDataAccessException.class)
-	public ModelAndView handleEmptyData(HttpServletRequest req, Exception ex) {
+	public ModelAndView handleEmptyData(HttpServletRequest req, Exception ex, Locale locale) {
 
 		ModelAndView model = new ModelAndView();
 		model.setViewName("cameras/show");
-		model.addObject("msg", "camera not found");
+		ResourceBundleMessageSource bean = new ResourceBundleMessageSource();
+		bean.setBasename("messages");
+		String msg = bean.getMessage("msg.camera_not_found", null, locale);
+		model.addObject("msg", msg);
 
 		return model;
 

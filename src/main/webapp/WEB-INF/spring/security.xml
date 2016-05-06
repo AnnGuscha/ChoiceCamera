@@ -6,12 +6,16 @@ http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
 http://www.springframework.org/schema/security
 http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 
-	<http auto-config="true">
+	<http auto-config="true" use-expressions="true">
+		<intercept-url pattern="/login*" access="permitAll"/>
+		<intercept-url pattern="/index*" access="permitAll"/>
+		<intercept-url pattern="/cameras/*" access="permitAll"/>
 		<intercept-url pattern="/admin**" access="ROLE_ADMIN"/>
-		<intercept-url pattern="/index*" access="ROLE_USER,ROLE_ANONYMOUS" />
-		<intercept-url pattern="/cameras/**" access="ROLE_ADMIN"/>
+		<intercept-url pattern="/cameras/delete**" access="ROLE_ADMIN"/>
+		<intercept-url pattern="/cameras/update**" access="ROLE_ADMIN"/>
+		<intercept-url pattern="/cameras/add**" access="ROLE_ADMIN"/>
 		<intercept-url pattern="/expert**" access="ROLE_EXPERT"/>
-		<intercept-url pattern="/user**" access="ROLE_USER"/>
+		<intercept-url pattern="/user**" access="hasAnyRole('ROLE_EXPERT', 'ROLE_ADMIN')"/>
 		<access-denied-handler error-page="/403"/>
 		<form-login
 				login-page="/login"

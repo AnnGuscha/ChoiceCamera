@@ -24,8 +24,20 @@
                     </ul>
                 </li>
             </ul>
-
             <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                       aria-expanded="false"><spring:message code="label.language"/><span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="?lang=ru" class="language" rel="ru-RUS"><img src="/resources/images/ru.gif"
+                                                                                  alt="Русский"/> <spring:message
+                                code="label.russian"/></a></li>
+                        <li><a href="?lang=en" class="language" rel="en-US"><img src="/resources/images/en.gif"
+                                                                                 alt="English"/> <spring:message
+                                code="label.english"/></a></li>
+
+                    </ul>
+                </li>
                 <li><a href="/user"><spring:message code="label.setting"/></a></li>
                 <li><a href="/logout"><spring:message code="label.logout"/></a></li>
             </ul>

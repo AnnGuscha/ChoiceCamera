@@ -36,7 +36,7 @@
                 <div class="form-group ${status.error ? 'has-error' : ''}">
                     <label class="col-sm-2 control-label"><spring:message code="label.password"/></label>
                     <div class="col-sm-3">
-                        <form:input path="password" type="text" class="form-control " id="password"
+                        <form:input path="password" type="password" class="form-control " id="password"
                                     placeholder="password"/>
                         <form:errors path="password" class="control-label"/>
                     </div>

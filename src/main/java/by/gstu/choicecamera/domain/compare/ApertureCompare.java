@@ -10,9 +10,9 @@ public class ApertureCompare implements Comparator<Camera> {
     public int compare(Camera o1, Camera o2) {
         double cam1 = (MultiCriterion.harrington(o1.getApertureMin()) + MultiCriterion.harrington(o1.getApertureMax())) / 2;
         double cam2 = (MultiCriterion.harrington(o2.getApertureMin()) + MultiCriterion.harrington(o2.getApertureMax())) / 2;
-        if (cam1 < cam2)
-            return 1;
         if (cam1 > cam2)
+            return 1;
+        if (cam1 < cam2)
             return -1;
         return 0;
     }

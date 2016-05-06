@@ -9,4 +9,22 @@
 	<!-- Определяем папку, в которой будем искать веб компоненты (контроллеры)-->
 	<context:component-scan base-package="by.gstu.choicecamera.web.controller" />
 	<context:component-scan base-package="by.gstu.choicecamera.web.validator"/>
+
+	<bean id="localeResolver"
+		  class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="ru"/>
+	</bean>
+
+	<bean id="localeChangeInterceptor"
+		  class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+		<property name="paramName" value="lang"/>
+	</bean>
+
+	<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping">
+		<property name="interceptors">
+			<list>
+				<ref bean="localeChangeInterceptor"/>
+			</list>
+		</property>
+	</bean>
 </beans>

@@ -39,7 +39,7 @@ public class UserController {
             return "user/userForm";
         } else {
             redirectAttributes.addFlashAttribute("css", "success");
-            redirectAttributes.addFlashAttribute("msg", "User updated successfully!");
+            redirectAttributes.addFlashAttribute("msg", "user_updated_successfully");
             userService.edit(user);
 
             // POST/REDIRECT/GET

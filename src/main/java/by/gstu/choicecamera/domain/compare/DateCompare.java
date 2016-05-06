@@ -11,9 +11,9 @@ public class DateCompare implements Comparator<Camera> {
 
     @Override
     public int compare(Camera cam1, Camera cam2) {
-        if(cam1.getReleaseDate()<cam2.getReleaseDate())
-            return 1;
         if(cam1.getReleaseDate()>cam2.getReleaseDate())
+            return 1;
+        if (cam1.getReleaseDate() < cam2.getReleaseDate())
             return -1;
         return 0;
     }
