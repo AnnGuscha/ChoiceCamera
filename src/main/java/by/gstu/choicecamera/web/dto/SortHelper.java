@@ -19,7 +19,7 @@ public class SortHelper {
         return cameraList.stream().sorted((c1, c2) -> Integer.compare(c1.getId(), c2.getId())).collect(Collectors.toList());
     }
 
-    public static List<Camera> search(List<Camera> cameraList, String sSearch) {
+    public static List<? extends Camera> search(List<? extends Camera> cameraList, String sSearch) {
         return cameraList.stream().filter(c -> c.getName().toLowerCase().contains(sSearch.toLowerCase())
                 || c.getManufacturer().toLowerCase().contains(sSearch.toLowerCase())).collect(Collectors.toList());
     }

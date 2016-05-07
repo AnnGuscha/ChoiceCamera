@@ -6,6 +6,7 @@ import by.gstu.choicecamera.domain.Manufacturers;
 import by.gstu.choicecamera.domain.compare.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class MultiCriterion {
@@ -37,9 +38,10 @@ public class MultiCriterion {
         return 0;
     }
 
-    public List<Camera> solve(double[][] expert) {
+    public void solve(double[][] expert) {
         getMarks();
-        return mi(pareto(), rang(expert));
+        pareto();
+        mi(rang(expert));
     }
 
     void getMarks() {
@@ -65,40 +67,38 @@ public class MultiCriterion {
         }
     }
 
-    public List<CameraWithMarks> pareto() {
-        List<CameraWithMarks> result = cameraMarks;
+    public void pareto() {
         boolean isBetter, isComplete = false;
         int i = 0;
         int j = 1;
         while (!isComplete) {
             isBetter = true;
-            for (int m = 0; m < result.get(i).marks.length; m++)
-                if (result.get(i).marks[m] < result.get(j).marks[m]) {
+            for (int m = 0; m < cameraMarks.get(i).marks.length; m++)
+                if (cameraMarks.get(i).marks[m] < cameraMarks.get(j).marks[m]) {
                     isBetter = false;
                     break;
                 }
             if (isBetter) {
-                result.remove(j);
+                cameraMarks.remove(j);
             } else {
                 isBetter=true;
-                for (int m = 0; m < result.get(i).marks.length; m++)
-                    if (result.get(j).marks[m] < result.get(i).marks[m]) {
+                for (int m = 0; m < cameraMarks.get(i).marks.length; m++)
+                    if (cameraMarks.get(j).marks[m] < cameraMarks.get(i).marks[m]) {
                         isBetter = false;
                         break;
                     }
                 if (isBetter) {
-                    result.remove(i);
+                    cameraMarks.remove(i);
                 }
             }
-            if (j < result.size() - 1)
+            if (j < cameraMarks.size() - 1)
                 j++;
-            else if (i < result.size() - 1 - 1) {
+            else if (i < cameraMarks.size() - 1 - 1) {
                 i++;
                 j=i+1;
             } else
                 isComplete = true;
         }
-        return result;
     }
 
     double[] rang(double[][] expert) {
@@ -122,19 +122,26 @@ public class MultiCriterion {
         return v;
     }
 
-    List<Camera> mi(List<CameraWithMarks> altern, double[] v) {
+    void mi(double[] v) {
 
-        for (int i = 0; i < altern.size(); i++)
+        for (int i = 0; i < cameraMarks.size(); i++)
             for (int j = 0; j < v.length; j++)
-                altern.get(i).indicImpot += altern.get(i).marks[j] * v[j];
+                cameraMarks.get(i).indicImpot += cameraMarks.get(i).marks[j] * v[j];
 
-        altern.sort(new WeightCompare());
+        cameraMarks.sort(new WeightCompare());
+        Collections.reverse(cameraMarks);
+    }
+
+    public List<Camera> getCameras() {
 
         List<Camera> cameras = new ArrayList<>();
-        for (int i = altern.size()-1; i>=0 ; i--) {
-            cameras.add(altern.get(i).camera);
+        for (CameraWithMarks camera : cameraMarks) {
+            cameras.add(camera.camera);
         }
-
         return cameras;
+    }
+
+    public List<CameraWithMarks> getCamerasMarks() {
+        return cameraMarks;
     }
 }

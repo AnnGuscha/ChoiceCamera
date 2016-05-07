@@ -16,7 +16,6 @@
                 {
                     "render": function (data, type, row) {
                         return ' <a  data = \"' + data + "\" href=\"/cameras/update/" + data + '\" > <img src="/resources/images/pen-20.png"/></a> |' +
-                                //'<a href=\"Details/' + data + '\">Details</a> |' +
                                 ' <a href=\"/cameras/delete/' + data + '\"><img src="/resources/images/delete-20.png"/></a> ';
                     },
                     "width": "120px",
@@ -30,7 +29,7 @@
                 },
                 {
                     "visible": false,
-                    "targets": 6
+                    "targets": [6, 8]
                 }
             ],
             "columns": [
@@ -41,8 +40,16 @@
                 {"data": "manufacturer"},
                 {"data": "apertureMin"},
                 {"data": "apertureMax"},
-                {"data": "matrixDot"}
-            ]
+                {"data": "matrixDot"},
+                {"data": "color"}
+            ],
+            "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                if (aData['color'] != null) {
+                    $(nRow).css('background-color', aData['color']);
+                    //$(nRow).css('background-color', '#98FB98')
+                }
+                //$(nRow).css('background-color', '#F0E68C')
+            }
         });
 
         $('#myDataTable tbody').on('click', 'tr', function () {
@@ -87,6 +94,7 @@
             <th><spring:message code="label.aperture"/></th>
             <th></th>
             <th><spring:message code="label.matrixdot"/></th>
+            <th></th>
         </tr>
         </thead>
     </table>

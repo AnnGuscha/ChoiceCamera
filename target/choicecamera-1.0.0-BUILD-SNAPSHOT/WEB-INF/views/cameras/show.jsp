@@ -23,10 +23,10 @@
     <h1><spring:message code="label.detailscamera"/></h1>
     <br/>
 
-    <div class="row">
-        <label class="col-sm-2">ID</label>
-        <div class="col-sm-10">${camera.id}</div>
-    </div>
+    <%--<div class="row">--%>
+    <%--<label class="col-sm-2">ID</label>--%>
+    <%--<div class="col-sm-10">${camera.id}</div>--%>
+    <%--</div>--%>
 
     <div class="row">
         <label class="col-sm-2"><spring:message code="label.name"/></label>

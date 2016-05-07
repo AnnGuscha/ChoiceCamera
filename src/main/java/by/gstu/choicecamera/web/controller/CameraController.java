@@ -60,7 +60,7 @@ public class CameraController {
 
 		//Search
 		if (param.getsSearch() != null) {
-			cameraList = SortHelper.search(cameraList, param.getsSearch());
+			cameraList = (List<Camera>) SortHelper.search(cameraList, param.getsSearch());
 		}
 
 		//Sorting

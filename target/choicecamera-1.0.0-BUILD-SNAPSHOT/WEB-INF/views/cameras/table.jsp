@@ -7,7 +7,7 @@
     $(document).ready(function () {
         var table = $('#myDataTable').dataTable({
             "bServerSide": true,
-//            "language": {"url": "/resources/datatable/lang/dataTables.en_US"},
+            "language": {"url": "/resources/datatable/lang/dataTables.${pageContext.response.locale}"},
             "sAjaxSource": "all",
             "bProcessing": true,
             "bRetrieve": true,
@@ -72,10 +72,15 @@
             <strong>${msg}</strong>
         </div>
     </c:if>
-    <h2><spring:message code="label.cameras"/></h2>
+
+    <h2><spring:message code="label.cameras"/>
+        <a href="/best" class="btn btn-success pull-right"><spring:message code="label.bestmodel"/></a>
+    </h2>
     <p>
         <a href="/cameras/add"><spring:message code="label.addcamera"/></a>
+
     </p>
+
     <table id="myDataTable" class="table table-striped table-bordered hover" cellspacing="0" width="100%">
         <thead>
         <tr>

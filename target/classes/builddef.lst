@@ -9,6 +9,7 @@ C:\Users\Anna\.m2\repository\antlr\antlr\2.7.6\antlr-2.7.6.jar;C:\Users\Anna\.m2
 E:\java\ChoceCameraSpring\target\classes
 E:\java\ChoceCameraSpring\src\main\java\by\gstu\choicecamera\domain\compare\ApertureCompare.java
 E:\java\ChoceCameraSpring\src\main\java\by\gstu\choicecamera\manager\ConfigManager.java
+E:\java\ChoceCameraSpring\src\main\java\by\gstu\choicecamera\web\model\CameraModel.java
 E:\java\ChoceCameraSpring\src\main\java\by\gstu\choicecamera\domain\Camera.java
 E:\java\ChoceCameraSpring\src\main\java\by\gstu\choicecamera\manager\MessageManager.java
 E:\java\ChoceCameraSpring\src\main\java\by\gstu\choicecamera\web\controller\ExpertController.java
@@ -16,10 +17,12 @@ E:\java\ChoceCameraSpring\src\main\java\by\gstu\choicecamera\web\dto\SortHelper.
 E:\java\ChoceCameraSpring\src\main\java\by\gstu\choicecamera\domain\compare\WeightCompare.java
 E:\java\ChoceCameraSpring\src\main\java\by\gstu\choicecamera\domain\compare\DateCompare.java
 E:\java\ChoceCameraSpring\src\main\java\by\gstu\choicecamera\web\controller\CameraController.java
+E:\java\ChoceCameraSpring\src\main\java\by\gstu\choicecamera\web\controller\OptimizationController.java
 E:\java\ChoceCameraSpring\src\main\java\by\gstu\choicecamera\web\dto\JQueryDataTableParamModel.java
 E:\java\ChoceCameraSpring\src\main\java\by\gstu\choicecamera\service\CameraServiceImpl.java
 E:\java\ChoceCameraSpring\src\main\java\by\gstu\choicecamera\domain\Expert.java
 E:\java\ChoceCameraSpring\src\main\java\by\gstu\choicecamera\service\CameraService.java
+E:\java\ChoceCameraSpring\src\main\java\by\gstu\choicecamera\service\OptimizationService.java
 E:\java\ChoceCameraSpring\src\main\java\by\gstu\choicecamera\web\validator\UserFormValidator.java
 E:\java\ChoceCameraSpring\src\main\java\by\gstu\choicecamera\domain\optimization\MultiCriterion.java
 E:\java\ChoceCameraSpring\src\main\java\by\gstu\choicecamera\web\controller\UserController.java
@@ -27,6 +30,7 @@ E:\java\ChoceCameraSpring\src\main\java\by\gstu\choicecamera\util\SessionUtil.ja
 E:\java\ChoceCameraSpring\src\main\java\by\gstu\choicecamera\dao\UserDAOImpl.java
 E:\java\ChoceCameraSpring\src\main\java\by\gstu\choicecamera\service\UserServiceImpl.java
 E:\java\ChoceCameraSpring\src\main\java\by\gstu\choicecamera\dao\ExpertDAOImpl.java
+E:\java\ChoceCameraSpring\src\main\java\by\gstu\choicecamera\web\filter\LanguageFilter.java
 E:\java\ChoceCameraSpring\src\main\java\by\gstu\choicecamera\manager\Role.java
 E:\java\ChoceCameraSpring\src\main\java\by\gstu\choicecamera\service\UserService.java
 E:\java\ChoceCameraSpring\src\main\java\by\gstu\choicecamera\web\controller\LoginLogoutController.java

@@ -14,12 +14,32 @@
 	<!-- Определяем папки, в которых будем автоматически искать бины-компоненты (@Component, @Service)  -->
 	<context:component-scan base-package="by.gstu.choicecamera.dao" />
 	<context:component-scan base-package="by.gstu.choicecamera.service" />
-	<context:component-scan base-package="by.gstu.choicecamera.util" />
+	<context:component-scan base-package="by.gstu.choicecamera.util"/>
 
 	<!-- Файл с настройками ресурсов для работы с данными (Data Access Resources) -->
 	<import resource="data.xml" />
 				
 	<!-- Файл с настройками безопасности -->
 	<import resource="security.xml" />
+
+
+	<bean id="localeChangeInterceptor"
+		  class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+		<property name="paramName" value="lang"/>
+	</bean>
+
+	<bean id="localeResolver"
+		  class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+		<property name="defaultLocale" value="en"/>
+	</bean>
+
+	<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping">
+		<property name="interceptors">
+			<list>
+				<ref bean="localeChangeInterceptor"/>
+			</list>
+		</property>
+	</bean>
+
 
 </beans>
