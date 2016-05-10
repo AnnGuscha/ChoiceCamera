@@ -10,11 +10,11 @@ http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 		<intercept-url pattern="/login*" access="permitAll"/>
 		<intercept-url pattern="/index*" access="permitAll"/>
 		<intercept-url pattern="/cameras/*" access="permitAll"/>
-		<intercept-url pattern="/admin**" access="ROLE_ADMIN"/>
-		<intercept-url pattern="/cameras/delete**" access="ROLE_ADMIN"/>
-		<intercept-url pattern="/cameras/update**" access="ROLE_ADMIN"/>
-		<intercept-url pattern="/cameras/add**" access="ROLE_ADMIN"/>
-		<intercept-url pattern="/expert**" access="ROLE_EXPERT"/>
+		<intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/cameras/delete**" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/cameras/update**" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/cameras/add**" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/expert**" access="hasRole('ROLE_EXPERT')"/>
 		<intercept-url pattern="/user**" access="hasAnyRole('ROLE_EXPERT', 'ROLE_ADMIN')"/>
 		<access-denied-handler error-page="/403"/>
 		<form-login

@@ -30,6 +30,48 @@ public class CameraDAOImpl implements CameraDAO {
 		logger.debug("Retrieving all cameras");
 		return sessionFactory.getCurrentSession().createQuery("from Camera")
 			.list();
+//		List<Camera> cameras = new ArrayList<>();
+//		Camera camera = new Camera();
+//		camera.setId(1);
+//		camera.setName("D3200");
+//		camera.setPrice(6900000);
+//		camera.setReleaseDate(2012);
+//		camera.setManufacturer("Nikon");
+//		camera.setApertureMin(3.5);
+//		camera.setApertureMax(5.6);
+//		camera.setMatrixDot(24.2);
+//		cameras.add(camera);
+//		Camera camera1 = new Camera();
+//		camera1.setId(2);
+//		camera1.setName("DMC-GX7");
+//		camera1.setPrice(8999000);
+//		camera1.setReleaseDate(2013);
+//		camera1.setManufacturer("Panasonic");
+//		camera1.setApertureMin(3.5);
+//		camera1.setApertureMax(5.6);
+//		camera1.setMatrixDot(16.0);
+//		cameras.add(camera1);
+//		Camera camera2 = new Camera();
+//		camera2.setId(3);
+//		camera2.setName("X20");
+//		camera2.setPrice(7499000);
+//		camera2.setReleaseDate(2013);
+//		camera2.setManufacturer("Fujifilm");
+//		camera2.setApertureMin(2.0);
+//		camera2.setApertureMax(2.8);
+//		camera2.setMatrixDot(12.0);
+//		cameras.add(camera2);
+//		Camera camera3 = new Camera();
+//		camera3.setId(4);
+//		camera3.setName("EOS 1200D");
+//		camera3.setPrice(6600000);
+//		camera3.setReleaseDate(2014);
+//		camera3.setManufacturer("Canon");
+//		camera3.setApertureMin(3.5);
+//		camera3.setApertureMax(5.6);
+//		camera3.setMatrixDot(18.0);
+//		cameras.add(camera3);
+//		return cameras;
 	}
 
 	public void remove(Integer id) {

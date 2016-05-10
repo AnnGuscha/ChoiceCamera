@@ -12,6 +12,7 @@
             "bProcessing": true,
             "bRetrieve": true,
             "searching": true,
+
             "columnDefs": [
                 {
                     "render": function (data, type, row) {
@@ -72,15 +73,16 @@
             <strong>${msg}</strong>
         </div>
     </c:if>
+    <div class="btn-group btn-group-justified pull-right">
+        <a href="/bestbyprice" class="btn btn-default btn-success"><spring:message code="label.bestbyprice"/></a>
+        <a href="/best" class="btn btn-default btn-success"><spring:message code="label.bestmodel"/></a>
+    </div>
 
-    <h2><spring:message code="label.cameras"/>
-        <a href="/best" class="btn btn-success pull-right"><spring:message code="label.bestmodel"/></a>
-    </h2>
+    <h2><spring:message code="label.cameras"/></h2>
     <p>
         <a href="/cameras/add"><spring:message code="label.addcamera"/></a>
 
     </p>
-
     <table id="myDataTable" class="table table-striped table-bordered hover" cellspacing="0" width="100%">
         <thead>
         <tr>

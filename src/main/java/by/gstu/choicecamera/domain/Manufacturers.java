@@ -1,13 +1,13 @@
 package by.gstu.choicecamera.domain;
 
 public enum Manufacturers {
-    NIKON(6, "Nikon"),
-    CANON(7, "Canon"),
-    PANASONIC(3, "Panasonic"),
-    FUJIFILM(2, "Fujifilm"),
-    OLYMPUS(1, "Olympus"),
-    SONY(5, "Sony"),
-    SAMSUNG(4, "SAMSUNG");
+    CANON(1, "Canon"),
+    NIKON(2, "Nikon"),
+    SONY(3, "Sony"),
+    PANASONIC(4, "Panasonic"),
+    SAMSUNG(5, "SAMSUNG"),
+    FUJIFILM(6, "Fujifilm"),
+    OLYMPUS(7, "Olympus");
 
     int value;
     String string;

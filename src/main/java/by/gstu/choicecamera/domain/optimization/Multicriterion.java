@@ -55,13 +55,13 @@ public class MultiCriterion {
         cameras.sort(new ApertureCompare());
         double maxApert = (harrington(cameras.get(cameras.size()-1).getApertureMin()) + harrington(cameras.get(cameras.size()-1).getApertureMax())) / 2;
         cameras.sort(new ManufacturerCompare());
-        double manuf = Manufacturers.valueOf(cameras.get(cameras.size()-1).getManufacturer().toUpperCase()).getValue();
+        double manuf = Manufacturers.valueOf(cameras.get(0).getManufacturer().toUpperCase()).getValue();
 
         for (int i = 0; i < cameras.size(); i++) {
             cameraMarks.add(new CameraWithMarks(cameras.get(i), new double[countCriterion]));
             cameraMarks.get(i).marks[0] = minCost / cameras.get(i).getPrice();
             cameraMarks.get(i).marks[1] = cameras.get(i).getReleaseDate() / maxDate;
-            cameraMarks.get(i).marks[2] = Manufacturers.valueOf(cameras.get(i).getManufacturer().toUpperCase()).getValue()/manuf;
+            cameraMarks.get(i).marks[2] = manuf / Manufacturers.valueOf(cameras.get(i).getManufacturer().toUpperCase()).getValue();
             cameraMarks.get(i).marks[3] = ((harrington(cameras.get(i).getApertureMin()) + harrington(cameras.get(i).getApertureMax())) / 2) / maxApert;
             cameraMarks.get(i).marks[4] = cameras.get(i).getMatrixDot() / maxMatrixDot;
         }

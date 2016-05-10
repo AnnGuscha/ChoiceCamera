@@ -28,12 +28,24 @@ public class OptimizationController {
         return "cameras/bestCameras";
     }
 
+    @RequestMapping("/bestbyprice")
+    public String listCamerasByprice() {
+
+        return "cameras/bestCamerasByPrice";
+    }
+
     @RequestMapping(value = "/best/api", method = RequestMethod.GET)
     public
     @ResponseBody
     Object getAll(JQueryDataTableParamModel param) {
 
         List<CameraModel> cameraList = optimizationService.listCameraModels();
+
+        return getJsonDTO(param, cameraList);
+    }
+
+    private JsonDTO getJsonDTO(JQueryDataTableParamModel param, List<CameraModel> cameraList) {
+
         int iTotalRecords = cameraList.size();
 
         //Search
@@ -112,9 +124,17 @@ public class OptimizationController {
 
         //Pagination
         List<CameraModel> result = cameraList.stream().skip(param.getiDisplayStart()).limit(param.getiDisplayLength()).collect(Collectors.toList());
-        JsonDTO jsonDTO = new JsonDTO(param.getsEcho(), iTotalRecords, cameraList.size(), result);
 
-        return jsonDTO;
+        return new JsonDTO(param.getsEcho(), iTotalRecords, cameraList.size(), result);
     }
 
+    @RequestMapping(value = "/bestbyprice/api", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    Object getByPrice(JQueryDataTableParamModel param) {
+
+        List<CameraModel> cameraList = optimizationService.listCameraModelsByPrice();
+
+        return getJsonDTO(param, cameraList);
+    }
 }

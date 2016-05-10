@@ -8,16 +8,14 @@
         var table = $('#myDataTable').dataTable({
             "bServerSide": true,
             "language": {"url": "/resources/datatable/lang/dataTables.${pageContext.response.locale}"},
-            "sAjaxSource": "all",
+            "sAjaxSource": "/bestbyprice/api",
             "bProcessing": true,
             "bRetrieve": true,
             "searching": true,
-
             "columnDefs": [
                 {
                     "render": function (data, type, row) {
                         return ' <a  data = \"' + data + "\" href=\"/cameras/update/" + data + '\" > <img src="/resources/images/pen-20.png"/></a> |' +
-                                //'<a href=\"Details/' + data + '\">Details</a> |' +
                                 ' <a href=\"/cameras/delete/' + data + '\"><img src="/resources/images/delete-20.png"/></a> ';
                     },
                     "width": "120px",
@@ -31,7 +29,7 @@
                 },
                 {
                     "visible": false,
-                    "targets": 6
+                    "targets": [6, 8]
                 }
             ],
             "columns": [
@@ -42,8 +40,16 @@
                 {"data": "manufacturer"},
                 {"data": "apertureMin"},
                 {"data": "apertureMax"},
-                {"data": "matrixDot"}
-            ]
+                {"data": "matrixDot"},
+                {"data": "color"}
+            ],
+            "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                if (aData['color'] != null) {
+                    $(nRow).css('background-color', aData['color']);
+                    //$(nRow).css('background-color', '#98FB98')
+                }
+                //$(nRow).css('background-color', '#F0E68C')
+            }
         });
 
         $('#myDataTable tbody').on('click', 'tr', function () {
@@ -73,15 +79,9 @@
             <strong>${msg}</strong>
         </div>
     </c:if>
-    <div class="btn-group btn-group-justified pull-right">
-        <a href="/bestbyprice" class="btn btn-default btn-success"><spring:message code="label.bestbyprice"/></a>
-        <a href="/best" class="btn btn-default btn-success"><spring:message code="label.bestmodel"/></a>
-    </div>
-
     <h2><spring:message code="label.cameras"/></h2>
     <p>
         <a href="/cameras/add"><spring:message code="label.addcamera"/></a>
-
     </p>
     <table id="myDataTable" class="table table-striped table-bordered hover" cellspacing="0" width="100%">
         <thead>
@@ -94,6 +94,7 @@
             <th><spring:message code="label.aperture"/></th>
             <th></th>
             <th><spring:message code="label.matrixdot"/></th>
+            <th></th>
         </tr>
         </thead>
     </table>
